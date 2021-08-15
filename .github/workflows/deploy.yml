@@ -1,0 +1,30 @@
+name: deploy
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.3.4
+      - name: setup node
+        uses: actions/setup-node@v2.4.0
+        with:
+          node-version: '16'
+      - name: build and deploy
+        run: |
+          npm ci
+          npm run build
+          cd dist
+          git config --global user.email "28302241+samarium150@users.noreply.github.com"
+          git config --global user.name "Samarium"
+          git init
+          git add -A
+          git commit -m "chore: deploy"
+          git branch -M gh-pages
+          git push -f https://Samarium150:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git gh-pages
