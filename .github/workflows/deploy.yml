@@ -18,7 +18,7 @@ jobs:
           node-version: '16'
       - name: build and deploy
         run: |
-          npm ci
+          npm i
           npm run build
           cd dist
           git config --global user.email "28302241+samarium150@users.noreply.github.com"
