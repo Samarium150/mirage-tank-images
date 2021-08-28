@@ -1,38 +1,44 @@
 {
   "name": "mirage-tank-images",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build --base=/mirage-tank-images/",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "changelog": "conventional-changelog -p eslint -i CHANGELOG.md -s"
   },
   "dependencies": {
     "ant-design-vue": "^2.2.6",
-    "numjs": "nicolaspanel/numjs",
-    "vue": "^3.0.5",
-    "vue-class-component": "^8.0.0-0"
+    "arraybuffer-to-buffer": "^0.0.7",
+    "comlink": "^4.3.1",
+    "highlight.js": "^11.2.0",
+    "jimp": "^0.16.1",
+    "mathjs": "^9.4.4",
+    "particles.vue3": "^1.17.0",
+    "vue": "^3.2.6",
+    "vue-prism-editor": "^2.0.0-alpha.2",
+    "vue-router": "^4.0.11"
   },
   "devDependencies": {
-    "@types/numjs": "^0.16.1",
-    "@typescript-eslint/eslint-plugin": "^4.15.1",
-    "@typescript-eslint/parser": "^4.15.1",
-    "@vitejs/plugin-vue": "^1.3.0",
-    "@vue/compiler-sfc": "^3.0.5",
-    "@vue/eslint-config-standard": "^6.0.0",
-    "@vue/eslint-config-typescript": "^7.0.0",
-    "eslint": "^7.20.0",
-    "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^5.1.0",
-    "eslint-plugin-vue": "^7.2.0",
-    "typescript": "^4.3.2",
-    "vite": "^2.5.0",
-    "vue-tsc": "^0.2.3"
+    "@types/node": "^16.7.4",
+    "@typescript-eslint/eslint-plugin": "^4.29.3",
+    "@typescript-eslint/parser": "^4.29.3",
+    "@vitejs/plugin-vue": "^1.6.0",
+    "@vue/compiler-sfc": "^3.2.6",
+    "conventional-changelog-cli": "^2.1.1",
+    "eslint": "^7.32.0",
+    "eslint-plugin-vue": "^7.17.0",
+    "stylus": "^0.54.8",
+    "typescript": "~4.3.5",
+    "vite": "^2.5.1",
+    "vite-plugin-banner": "^0.1.3",
+    "vite-plugin-components": "^0.13.2",
+    "vue-eslint-parser": "^7.10.0",
+    "vue-tsc": "^0.3.0"
   },
   "resolutions": {
-    "minimist": "^1.2.5",
-    "sharp": "^0.28.3",
-    "static-eval": "^2.1.0"
+    "css": "^3.0.0",
+    "uuid": "^8.3.2"
   },
   "license": "MIT",
   "author": {
