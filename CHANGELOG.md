@@ -1,4 +1,31 @@
-# 1.0.0 (2021-08-28)
+# [1.1.0](https://github.com/Samarium150/mirage-tank-images/compare/v1.0.1...v1.1.0) (2021-08-29)
+
+
+### build
+
+* switch to vue-cli ([2e45604](https://github.com/Samarium150/mirage-tank-images/commit/2e4560428f8ad6f38f9554ad4607dc44760eb116))
+
+
+
+## [1.0.1](https://github.com/Samarium150/mirage-tank-images/compare/v1.0.0...v1.0.1) (2021-08-29)
+
+
+### chore
+
+* add CHANGELOG ([3a59359](https://github.com/Samarium150/mirage-tank-images/commit/3a5935905c50476906054e1be36c0389c1aedbf3))
+* update README ([c15432f](https://github.com/Samarium150/mirage-tank-images/commit/c15432fc3c05ba8f3dc74320a5a2680b615cabf9))
+
+### ci
+
+* update GitHub Actions ([16640e0](https://github.com/Samarium150/mirage-tank-images/commit/16640e0ea68b9da66fef42a9670e05249c2d0d16))
+
+### fix
+
+* set base path ([ce6a5a7](https://github.com/Samarium150/mirage-tank-images/commit/ce6a5a7769afe463127ca0cd900733ee06e58570))
+
+
+
+# [1.0.0](https://github.com/Samarium150/mirage-tank-images/compare/e728d40782939a72f87cc68cec7885e30a556dbc...v1.0.0) (2021-08-28)
 
 
 ### build
