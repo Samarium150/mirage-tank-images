@@ -3,14 +3,14 @@
 </template>
 
 <script lang="ts">
-import particles from "../assets/particles.json";
+import particles from "@/assets/particles.json?raw";
 import { defineComponent } from "vue";
 
 export default defineComponent({
     name: "BackgroundParticles",
     setup() {
         return {
-            options: particles
+            options: JSON.parse(particles)
         };
     }
 });

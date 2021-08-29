@@ -129,15 +129,12 @@ export default defineComponent({
     setup() {
         const route = useRoute();
         const router = useRouter();
-        const selectedKeys = ref<string[]>([ route.path.slice(1) ]);
+        const selectedKeys = ref<string[]>([route.path.slice(1)]);
         const openKeys = ref<string[]>([]);
-        if (route.path.startsWith("/code/"))
-            openKeys.value.push("code");
+        if (route.path.startsWith("/code/")) { openKeys.value.push("code"); }
         watch(route, (newValue) => {
-            if (openKeys.value.includes("code") && !newValue.path.startsWith("/code/"))
-                openKeys.value = [];
-            if (!openKeys.value.includes("code") && newValue.path.startsWith("/code/"))
-                openKeys.value.push("code");
+            if (openKeys.value.includes("code") && !newValue.path.startsWith("/code/")) { openKeys.value = []; }
+            if (!openKeys.value.includes("code") && newValue.path.startsWith("/code/")) { openKeys.value.push("code"); }
         });
         return {
             selectedKeys,

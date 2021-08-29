@@ -159,5 +159,3 @@ def build(source_x: str, source_y: str, target_name: str, shrink: float = 1):
     divided = divide_blend(linear_dodged, img_b)
     cv2.imwrite(target_name, add_mask(divided, linear_dodged))
     print("finished")
-
-build("../../../temp/samples/90446978_p0.png", "../../../temp/samples/90487779_p0.png", "res.png")

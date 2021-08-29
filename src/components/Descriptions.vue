@@ -111,14 +111,14 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, ref } from "vue";
-import { EllipsisOutlined,EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons-vue";
+import { EllipsisOutlined, EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons-vue";
 
 export default defineComponent({
     name: "Descriptions",
     components: {
         EllipsisOutlined,
         EyeOutlined,
-        EyeInvisibleOutlined,
+        EyeInvisibleOutlined
     },
     setup() {
         const isBlack = ref<boolean>(false);

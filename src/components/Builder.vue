@@ -123,7 +123,7 @@ interface FileInfo {
 function readFileAsArrayBufferAsync(file: Blob | undefined): Promise<ArrayBuffer> {
     return new Promise<ArrayBuffer>((resolve, reject) => {
         const reader = new FileReader();
-        if (!file) reject();
+        if (!file) reject(new Error("no file provided"));
         else {
             reader.readAsArrayBuffer(file);
             reader.onload = () => resolve(reader.result as ArrayBuffer);
@@ -155,7 +155,7 @@ export default defineComponent({
         const handleUpload = (file: File | Blob | undefined): Promise<string> => {
             return new Promise((resolve, reject) => {
                 const reader = new FileReader();
-                if (!file) reject();
+                if (!file) reject(new Error("no file provided"));
                 else {
                     reader.readAsDataURL(file);
                     reader.onload = () => resolve(reader.result as string);
@@ -262,9 +262,9 @@ export default defineComponent({
             toggleBackground: () => { isBlack.value = !isBlack.value; },
             indicator: h(LoadingOutlined, {
                 style: {
-                    fontSize: "40px",
+                    fontSize: "40px"
                 },
-                spin: true,
+                spin: true
             })
         };
     }

@@ -1,18 +1,16 @@
-import Jimp from "jimp/browser/lib/Jimp.js";
-import JIMP from "jimp/types/index.d.ts";
+import Jimp from "jimp/browser/lib/jimp.js";
 import ab2b from "arraybuffer-to-buffer";
 import * as mjs from "mathjs";
 
 class MirageTankImage {
-
     readonly width: number;
     readonly height: number;
     private channel: number;
     private data: mjs.Matrix
 
-    constructor(image: JIMP | mjs.Matrix) {
+    constructor(image: Jimp | mjs.Matrix) {
         if (image instanceof Jimp) {
-            image = image as JIMP;
+            image = image as Jimp;
             this.width = image.bitmap.width;
             this.height = image.bitmap.height;
             const matrix = mjs.zeros([this.height, this.width, 3], "dense") as mjs.Matrix;
@@ -49,10 +47,7 @@ class MirageTankImage {
     }
 
     adjustLightness(ratio: number) {
-        if (ratio > 0)
-            this.data = mjs.add(mjs.multiply(this.data, 1 - ratio), 255 * ratio) as mjs.Matrix;
-        else
-            this.data = mjs.multiply(this.data, 1 + ratio);
+        if (ratio > 0) { this.data = mjs.add(mjs.multiply(this.data, 1 - ratio), 255 * ratio) as mjs.Matrix; } else { this.data = mjs.multiply(this.data, 1 + ratio); }
     }
 
     linearDodgeBlend(image: MirageTankImage) {
@@ -98,10 +93,8 @@ class MirageTankImage {
         // @ts-ignore
         this.data = this.data.map((value: number, index: number[]) => {
             value = mjs.round(value);
-            if (value > 255)
-                value = 255;
-            if (value < 0)
-                value = 0;
+            if (value > 255) { value = 255; }
+            if (value < 0) { value = 0; }
             // @ts-ignore
             const alpha = (data) ? data.subset(mjs.index(...index)) as number : 255;
             return [value, value, value, alpha];
@@ -113,18 +106,14 @@ class MirageTankImage {
     toUint8Array(): Uint8Array {
         return new Uint8Array(this.data.toArray().flat(2));
     }
-
-    toUint8ClampedArray(): Uint8ClampedArray {
-        return new Uint8ClampedArray(this.data.toArray().flat(2));
-    }
 }
 
 export async function buildImage(top: ArrayBuffer, bottom: ArrayBuffer): Promise<string> {
-    const topImage: JIMP = await Jimp.read(ab2b(top));
-    const bottomImage: JIMP = await Jimp.read(ab2b(bottom));
+    const topImage: Jimp = await Jimp.read(ab2b(top));
+    const bottomImage: Jimp = await Jimp.read(ab2b(bottom));
     return new Promise<string>((resolve, reject) => {
-        if (topImage.bitmap.width != bottomImage.bitmap.width ||
-            topImage.bitmap.height != bottomImage.bitmap.height) reject(new Error("not same size"));
+        if (topImage.bitmap.width !== bottomImage.bitmap.width ||
+            topImage.bitmap.height !== bottomImage.bitmap.height) reject(new Error("not same size"));
         const top = new MirageTankImage(topImage);
         const bottom = new MirageTankImage(bottomImage);
         top.desaturate();
@@ -136,7 +125,7 @@ export async function buildImage(top: ArrayBuffer, bottom: ArrayBuffer): Promise
         const linearDodged = top.clone();
         top.divideBlend(bottom);
         top.toRGBA(linearDodged.getData());
-        const result: JIMP = new Jimp({
+        const result: Jimp = new Jimp({
             data: top.toUint8Array(),
             width: topImage.bitmap.width,
             height: topImage.bitmap.height
