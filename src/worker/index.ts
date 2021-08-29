@@ -1,5 +1,4 @@
 import * as Comlink from "comlink";
-// import worker from "./worker.ts?worker";
 
 type builder = (top: ArrayBuffer, bottom: ArrayBuffer) => Promise<string>;
 

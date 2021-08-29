@@ -107,42 +107,33 @@
     </a-layout>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { BuildTwoTone, CalculatorTwoTone, CodeTwoTone, createFromIconfontCN, HomeTwoTone } from "@ant-design/icons-vue";
-import { defineComponent, ref, watch } from "vue";
+import { ref, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import BackgroundParticles from "../components/BackgroundParticles.vue";
+import BackgroundParticles from "@/components/BackgroundParticles";
 
 const IconFont = createFromIconfontCN({
     scriptUrl: "//at.alicdn.com/t/font_2751062_jwgz1m88q1d.js"
 });
 
-export default defineComponent({
-    components: {
-        BackgroundParticles,
-        BuildTwoTone,
-        CalculatorTwoTone,
-        CodeTwoTone,
-        IconFont,
-        HomeTwoTone
-    },
-    setup() {
-        const route = useRoute();
-        const router = useRouter();
-        const selectedKeys = ref<string[]>([route.path.slice(1)]);
-        const openKeys = ref<string[]>([]);
-        if (route.path.startsWith("/code/")) { openKeys.value.push("code"); }
-        watch(route, (newValue) => {
-            if (openKeys.value.includes("code") && !newValue.path.startsWith("/code/")) { openKeys.value = []; }
-            if (!openKeys.value.includes("code") && newValue.path.startsWith("/code/")) { openKeys.value.push("code"); }
-        });
-        return {
-            selectedKeys,
-            openKeys,
-            handleClick: (e: { key: string, keyPath: string[] }) => router.push(`/${e.key}`)
-        };
-    }
+const route = useRoute();
+const router = useRouter();
+const selectedKeys = ref<string[]>([route.path.slice(1)]);
+const openKeys = ref<string[]>([]);
+
+if (route.path.startsWith("/code/")) {
+    openKeys.value.push("code");
+}
+
+watch(route, (newValue) => {
+    if (openKeys.value.includes("code") && !newValue.path.startsWith("/code/")) { openKeys.value = []; }
+    if (!openKeys.value.includes("code") && newValue.path.startsWith("/code/")) { openKeys.value.push("code"); }
 });
+
+function handleClick(e: { key: string, keyPath: string[] }) {
+    router.push(`/${e.key}`);
+}
 </script>
 
 <style scoped lang="stylus">

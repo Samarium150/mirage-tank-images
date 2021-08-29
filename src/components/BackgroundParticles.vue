@@ -2,18 +2,9 @@
     <Particles id="particles" :options="options" />
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import particles from "@/assets/particles.json?raw";
-import { defineComponent } from "vue";
-
-export default defineComponent({
-    name: "BackgroundParticles",
-    setup() {
-        return {
-            options: JSON.parse(particles)
-        };
-    }
-});
+const options = JSON.parse(particles);
 </script>
 
 <style scoped lang="stylus">

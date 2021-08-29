@@ -60,17 +60,17 @@
                     </div>
                 </template>
                 <template #actions>
-                    <eye-outlined
+                    <EyeOutlined
                         v-if="!isBlack"
                         title="改变背景颜色"
                         @click="toggleBackground"
                     />
-                    <eye-invisible-outlined
+                    <EyeInvisibleOutlined
                         v-else
                         title="改变背景颜色"
                         @click="toggleBackground"
                     />
-                    <ellipsis-outlined
+                    <EllipsisOutlined
                         title="更多"
                         @click="browserWindow?.open('https://www.pixiv.net/users/1193008', '_blank')"
                     />
@@ -109,30 +109,20 @@
     </a-row>
 </template>
 
-<script lang="ts">
-import { defineComponent, onMounted, ref } from "vue";
+<script setup lang="ts">
+import { onMounted, ref } from "vue";
 import { EllipsisOutlined, EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons-vue";
 
-export default defineComponent({
-    name: "Descriptions",
-    components: {
-        EllipsisOutlined,
-        EyeOutlined,
-        EyeInvisibleOutlined
-    },
-    setup() {
-        const isBlack = ref<boolean>(false);
-        const browserWindow = ref<Window>();
-        onMounted(() => {
-            browserWindow.value = window;
-        });
-        return {
-            isBlack,
-            browserWindow,
-            toggleBackground: () => { isBlack.value = !isBlack.value; }
-        };
-    }
+const isBlack = ref<boolean>(false);
+const browserWindow = ref<Window>();
+
+onMounted(() => {
+    browserWindow.value = window;
 });
+
+function toggleBackground() {
+    isBlack.value = !isBlack.value;
+}
 </script>
 
 <style scoped lang="stylus">

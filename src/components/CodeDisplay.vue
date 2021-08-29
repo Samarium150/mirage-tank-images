@@ -8,37 +8,27 @@
     />
 </template>
 
-<script lang="ts">
-import { defineComponent, toRefs } from "vue";
+<script setup lang="ts">
+import { defineProps, toRefs, withDefaults } from "vue";
 import { PrismEditor } from "vue-prism-editor";
 import highlightJS from "highlight.js";
 
-export default defineComponent({
-    name: "CodeDisplay",
-    components: {
-        PrismEditor
-    },
-    props: {
-        code: {
-            type: String,
-            default: ""
-        },
-        language: {
-            type: String,
-            default: "plaintext"
-        }
-    },
-    setup(props) {
-        const { code, language } = toRefs(props);
-        const editorCode = code;
-        const highlighter = (code: string): string =>
-            highlightJS.highlight(code, { language: language.value }).value;
-        return {
-            editorCode,
-            highlighter
-        };
-    }
+interface Props {
+    code: string;
+    language: string;
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    code: "",
+    language: "plaintext"
 });
+
+const { code, language } = toRefs(props);
+
+const editorCode = code;
+
+const highlighter = (code: string): string =>
+    highlightJS.highlight(code, { language: language.value }).value;
 </script>
 
 <style lang="stylus">

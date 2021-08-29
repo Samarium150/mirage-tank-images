@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import sourceCode from "../lib";
+import sourceCode from "@/lib";
 
 export default createRouter({
     history: createWebHistory(process.env.BASE_URL),

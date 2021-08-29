@@ -12,7 +12,7 @@
                 @preview="handlePreview"
             >
                 <div v-if="fileListTop.length < 1">
-                    <plus-outlined style="font-size: 2em" />
+                    <PlusOutlined style="font-size: 2em" />
                     <div class="ant-upload-text" style="margin-top: 0.5em">
                         上传<strong>白色背景</strong>下显示的图片
                     </div>
@@ -29,7 +29,7 @@
                 @preview="handlePreview"
             >
                 <div v-if="fileListBottom.length < 1">
-                    <plus-outlined style="font-size: 2em" />
+                    <PlusOutlined style="font-size: 2em" />
                     <div class="ant-upload-text" style="margin-top: 0.5em">
                         上传<strong>黑色背景</strong>下显示的图片
                     </div>
@@ -90,18 +90,18 @@
     </a-modal>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref, h, onMounted } from "vue";
+<script setup lang="ts">
+import { h, onMounted, ref } from "vue";
 import {
     DownloadOutlined,
-    EyeOutlined,
     EyeInvisibleOutlined,
+    EyeOutlined,
     LoadingOutlined,
     PlusOutlined,
     ToolOutlined
 } from "@ant-design/icons-vue";
+import buildImage from "@/worker";
 import { Empty, message, Modal } from "ant-design-vue";
-import buildImage from "../worker";
 
 interface FileItem {
     uid: string;
@@ -120,6 +120,23 @@ interface FileInfo {
     fileList: FileItem[];
 }
 
+const loadingTop = ref<boolean>(false);
+const loadingBottom = ref<boolean>(false);
+const loadingResult = ref<boolean>(false);
+const previewVisible = ref<boolean>(false);
+const previewImage = ref<string | undefined>();
+const fileListTop = ref<FileItem[]>([]);
+const fileListBottom = ref<FileItem[]>([]);
+const result = ref<string>("");
+const isBlack = ref<boolean>(false);
+const placeholder = Empty.PRESENTED_IMAGE_SIMPLE;
+const indicator = h(LoadingOutlined, {
+    style: {
+        fontSize: "40px"
+    },
+    spin: true
+});
+
 function readFileAsArrayBufferAsync(file: Blob | undefined): Promise<ArrayBuffer> {
     return new Promise<ArrayBuffer>((resolve, reject) => {
         const reader = new FileReader();
@@ -132,142 +149,98 @@ function readFileAsArrayBufferAsync(file: Blob | undefined): Promise<ArrayBuffer
     });
 }
 
-export default defineComponent({
-    name: "Builder",
-    components: {
-        DownloadOutlined,
-        EyeOutlined,
-        EyeInvisibleOutlined,
-        PlusOutlined,
-        ToolOutlined
-    },
-    setup() {
-        const loadingTop = ref<boolean>(false);
-        const loadingBottom = ref<boolean>(false);
-        const loadingResult = ref<boolean>(false);
-        const previewVisible = ref<boolean>(false);
-        const previewImage = ref<string | undefined>();
-        const fileListTop = ref<FileItem[]>([]);
-        const fileListBottom = ref<FileItem[]>([]);
-        const result = ref<string>("");
-        const isBlack = ref<boolean>(false);
+function handleUpload(file: File | Blob | undefined): Promise<string> {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        if (!file) reject(new Error("no file provided"));
+        else {
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result as string);
+            reader.onerror = () => reject(reader.error);
+        }
+    });
+}
 
-        const handleUpload = (file: File | Blob | undefined): Promise<string> => {
-            return new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                if (!file) reject(new Error("no file provided"));
-                else {
-                    reader.readAsDataURL(file);
-                    reader.onload = () => resolve(reader.result as string);
-                    reader.onerror = () => reject(reader.error);
-                }
-            });
-        };
-
-        const handlePreview = async (file: FileItem) => {
-            if (!file.url && !file.preview) {
-                file.preview = (await handleUpload(file.originFileObj)) as string;
-            }
-            previewImage.value = (file.url || file.preview) as string;
-            previewVisible.value = true;
-        };
-
-        const handleChangeTop = (info: FileInfo) => {
-            if (info.file.status === "uploading") {
-                loadingTop.value = true;
-                return;
-            }
-            if (info.file.status === "done") {
-                loadingTop.value = false;
-                fileListTop.value = info.fileList;
-            }
-            if (info.file.status === "error") {
-                loadingTop.value = false;
-                message.error("upload error");
-            }
-        };
-
-        const handleChangeBottom = (info: FileInfo) => {
-            if (info.file.status === "uploading") {
-                loadingBottom.value = true;
-                return;
-            }
-            if (info.file.status === "done") {
-                loadingBottom.value = false;
-                fileListBottom.value = info.fileList;
-            }
-            if (info.file.status === "error") {
-                loadingBottom.value = false;
-                message.error("upload error");
-            }
-        };
-
-        const handleCancel = () => {
-            previewVisible.value = false;
-        };
-
-        const build = async () => {
-            if (fileListTop.value.length === 1 && fileListBottom.value.length === 1) {
-                const top = fileListTop.value[0];
-                const bottom = fileListBottom.value[0];
-                if (top.status === "done" && bottom.status === "done") {
-                    loadingResult.value = true;
-                    const topBuffer: ArrayBuffer = await readFileAsArrayBufferAsync(top.originFileObj);
-                    const bottomBuffer: ArrayBuffer = await readFileAsArrayBufferAsync(bottom.originFileObj);
-                    buildImage(topBuffer, bottomBuffer)
-                        .then(res => {
-                            result.value = res;
-                        })
-                        .catch(err => {
-                            Modal.error({
-                                title: "错误",
-                                content: err.toString(),
-                                okText: "确认",
-                                closable: false
-                            });
-                        })
-                        .finally(() => {
-                            loadingResult.value = false;
-                        });
-                }
-            }
-        };
-
-        onMounted(() => {
-            Modal.warning({
-                title: "警告",
-                content: "生成器为纯前端，请选择图片大小相同且较小的两张图片来生成",
-                okText: "确认",
-                closable: false
-            });
-        });
-
-        return {
-            loadingTop,
-            loadingBottom,
-            loadingResult,
-            previewVisible,
-            previewImage,
-            fileListTop,
-            fileListBottom,
-            result,
-            isBlack,
-            placeholder: Empty.PRESENTED_IMAGE_SIMPLE,
-            handleUpload,
-            handlePreview,
-            handleChangeTop,
-            handleChangeBottom,
-            handleCancel,
-            build,
-            toggleBackground: () => { isBlack.value = !isBlack.value; },
-            indicator: h(LoadingOutlined, {
-                style: {
-                    fontSize: "40px"
-                },
-                spin: true
-            })
-        };
+async function handlePreview(file: FileItem) {
+    if (!file.url && !file.preview) {
+        file.preview = (await handleUpload(file.originFileObj)) as string;
     }
+    previewImage.value = (file.url || file.preview) as string;
+    previewVisible.value = true;
+}
+
+function handleChangeTop(info: FileInfo) {
+    if (info.file.status === "uploading") {
+        loadingTop.value = true;
+        return;
+    }
+    if (info.file.status === "done") {
+        loadingTop.value = false;
+        fileListTop.value = info.fileList;
+    }
+    if (info.file.status === "error") {
+        loadingTop.value = false;
+        message.error("upload error");
+    }
+}
+
+function handleChangeBottom(info: FileInfo) {
+    if (info.file.status === "uploading") {
+        loadingBottom.value = true;
+        return;
+    }
+    if (info.file.status === "done") {
+        loadingBottom.value = false;
+        fileListBottom.value = info.fileList;
+    }
+    if (info.file.status === "error") {
+        loadingBottom.value = false;
+        message.error("upload error");
+    }
+}
+
+function handleCancel() {
+    previewVisible.value = false;
+}
+
+async function build() {
+    if (fileListTop.value.length === 1 && fileListBottom.value.length === 1) {
+        const top = fileListTop.value[0];
+        const bottom = fileListBottom.value[0];
+        if (top.status === "done" && bottom.status === "done") {
+            loadingResult.value = true;
+            const topBuffer: ArrayBuffer = await readFileAsArrayBufferAsync(top.originFileObj);
+            const bottomBuffer: ArrayBuffer = await readFileAsArrayBufferAsync(bottom.originFileObj);
+            buildImage(topBuffer, bottomBuffer)
+                .then(res => {
+                    result.value = res;
+                })
+                .catch(err => {
+                    Modal.error({
+                        title: "错误",
+                        content: err.toString(),
+                        okText: "确认",
+                        closable: false
+                    });
+                })
+                .finally(() => {
+                    loadingResult.value = false;
+                });
+        }
+    }
+}
+
+function toggleBackground() {
+    isBlack.value = !isBlack.value;
+}
+
+onMounted(() => {
+    Modal.warning({
+        title: "警告",
+        content: "生成器为纯前端，请选择图片大小相同且较小的两张图片来生成",
+        okText: "确认",
+        closable: false
+    });
 });
 </script>
 

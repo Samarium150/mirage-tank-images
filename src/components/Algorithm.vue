@@ -59,14 +59,6 @@
     </a-row>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-
-export default defineComponent({
-    name: "Algorithm"
-});
-</script>
-
 <style scoped lang="stylus">
 .main
     height 100%
