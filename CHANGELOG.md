@@ -1,3 +1,17 @@
+# [1.2.0](https://github.com/Samarium150/mirage-tank-images/compare/v1.1.0...v1.2.0) (2021-08-29)
+
+
+### chore
+
+* update CHANGELOG ([ef999c8](https://github.com/Samarium150/mirage-tank-images/commit/ef999c8dd8e6d7b51a6fc4f2de6b2394d52768d6))
+* update README ([34e1649](https://github.com/Samarium150/mirage-tank-images/commit/34e16493316de6f3aac967899ad0216055e0f92a))
+
+### refactor
+
+* switch to script setup ([9e7a894](https://github.com/Samarium150/mirage-tank-images/commit/9e7a89433bd9aa704b9ab37680a8d7749bf819fb))
+
+
+
 # [1.1.0](https://github.com/Samarium150/mirage-tank-images/compare/v1.0.1...v1.1.0) (2021-08-29)
 
 
