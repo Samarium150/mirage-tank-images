@@ -1,9 +1,9 @@
 {
   "name": "mirage-tank-images",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build --base=/mirage-tank-images/",
+    "build": "vue-tsc --noEmit && vite build",
     "serve": "vite preview",
     "changelog": "conventional-changelog -p eslint -i CHANGELOG.md -s"
   },

@@ -5,6 +5,7 @@ import Banner from "vite-plugin-banner";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+    base: "/mirage-tank-images/",
     plugins: [
         vue(),
         ViteComponents({

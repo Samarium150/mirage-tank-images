@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import sourceCode from "../lib";
 
 export default createRouter({
-    history: createWebHistory(),
+    history: createWebHistory("/mirage-tank-images/"),
     routes: [{
         path: "/",
         name: "Home",
