@@ -11,13 +11,12 @@
 
 ## 背景知识
 
-聊天软件或网站总是以白色背景和黑色背景（夜间模式）显示图片，在默认的白色背景下看到一张图（图A），但是点击放大却变成另一张图（图B）。
+聊天软件或网站总是以白色背景和黑色背景（夜间模式）显示图片，在默认的白色背景下看到一张图（图A），但是点击放大却变成另一张图（图B）。这是因为查看详情使用的背景是黑色背景。
 
-这是因为查看详情使用的背景是黑色背景。如下图所示，看到的图片分别为天音かなた和妖精騎士トリスタン
+如下图所示，默认看到的图片分别为天音かなた，夜间模式看到的为妖精騎士トリスタン
 
-<a href="https://www.pixiv.net/artworks/90446978" taget="_blank"><img src="src/assets/sample.png" alt="sample_white" style="width: 30%; background-color: white" align="left"></a>
-<a href="https://www.pixiv.net/artworks/90487779" taget="_blank"><img src="src/assets/sample.png" alt="sample_black" style="width: 30%; background-color: black" align="right"></a>
-<br>
+<img src="src/assets/sample.png" alt="sample_white" width="30%">
 
 但实际上原图均为[sample.png](src/assets/sample.png)，区别仅仅是背景分别为白色和黑色。
+
 这样的图片又被网友戏称为“幻影坦克”。利用这样的特性可以将表情包作为上层，其他图片作为下层，在不同的颜色背景下显示来达到伪装和隐藏下层图片的目的。
