@@ -1,3 +1,16 @@
+## [1.2.1](https://github.com/Samarium150/mirage-tank-images/compare/v1.2.0...v1.2.1) (2021-09-05)
+
+
+### build
+
+* fix dependency vulnerability ([d067fe5](https://github.com/Samarium150/mirage-tank-images/commit/d067fe5a2f9469e451994377da311247a5c99520))
+
+### chore
+
+* update CHANGELOG ([bbc2cb9](https://github.com/Samarium150/mirage-tank-images/commit/bbc2cb9372a69b0ed486b45e27c2905df5c532d7))
+
+
+
 # [1.2.0](https://github.com/Samarium150/mirage-tank-images/compare/v1.1.0...v1.2.0) (2021-08-29)
 
 
