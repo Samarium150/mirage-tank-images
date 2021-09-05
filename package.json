@@ -1,11 +1,10 @@
 {
   "name": "mirage-tank-images",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "package-lock": "synp --source-file yarn.lock -f",
     "changelog": "conventional-changelog -p eslint -i CHANGELOG.md -s"
   },
   "dependencies": {
@@ -16,20 +15,20 @@
     "jimp": "^0.16.1",
     "mathjs": "^9.4.4",
     "particles.vue3": "^1.17.0",
-    "vue": "^3.2.6",
+    "vue": "^3.2.8",
     "vue-prism-editor": "^2.0.0-alpha.2",
     "vue-router": "^4.0.11"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.29.3",
-    "@typescript-eslint/parser": "^4.29.3",
+    "@typescript-eslint/eslint-plugin": "^4.30.0",
+    "@typescript-eslint/parser": "^4.30.0",
     "@vue/cli": "^5.0.0-beta.3",
     "@vue/cli-plugin-babel": "~5.0.0-beta.3",
     "@vue/cli-plugin-eslint": "~5.0.0-beta.3",
     "@vue/cli-plugin-router": "~5.0.0-beta.3",
     "@vue/cli-plugin-typescript": "~5.0.0-beta.3",
     "@vue/cli-service": "~5.0.0-beta.3",
-    "@vue/compiler-sfc": "^3.2.6",
+    "@vue/compiler-sfc": "^3.2.8",
     "@vue/eslint-config-standard": "^6.1.0",
     "@vue/eslint-config-typescript": "^7.0.0",
     "conventional-changelog-cli": "^2.1.1",
@@ -39,14 +38,15 @@
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-vue": "^7.17.0",
     "lint-staged": "^11.1.2",
-    "stylus": "^0.54.8",
+    "stylus": "^0.55.0",
     "stylus-loader": "^6.1.0",
-    "synp": "^1.9.7",
-    "typescript": "~4.3.5"
+    "typescript": "^4.4.2"
   },
   "resolutions": {
+    "ansi-html": "https://github.com/gebhardtr/ansi-html",
     "glob-parent": "^6.0.1",
-    "merge": "^2.1.1"
+    "merge": "^2.1.1",
+    "trim-off-newlines": "https://github.com/Samarium150/trim-off-newlines"
   },
   "_id": "@",
   "gitHooks": {

@@ -11,15 +11,15 @@ jobs:
     name: deploy
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.3.4
-      - name: setup node
-        uses: actions/setup-node@v2.4.0
+
+      - name: prepare
+        uses: DerYeger/yarn-setup-action@master
         with:
-          node-version: '16'
+          node-version: 16
+
       - name: build and deploy
         run: |
-          npm i
-          npm run build
+          yarn build
           cd dist
           git config --global user.email "28302241+samarium150@users.noreply.github.com"
           git config --global user.name "Samarium"
