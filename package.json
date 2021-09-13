@@ -20,15 +20,15 @@
     "vue-router": "^4.0.11"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.30.0",
-    "@typescript-eslint/parser": "^4.30.0",
+    "@typescript-eslint/eslint-plugin": "^4.31.0",
+    "@typescript-eslint/parser": "^4.31.0",
     "@vue/cli": "^5.0.0-beta.3",
     "@vue/cli-plugin-babel": "~5.0.0-beta.3",
     "@vue/cli-plugin-eslint": "~5.0.0-beta.3",
     "@vue/cli-plugin-router": "~5.0.0-beta.3",
     "@vue/cli-plugin-typescript": "~5.0.0-beta.3",
     "@vue/cli-service": "~5.0.0-beta.3",
-    "@vue/compiler-sfc": "^3.2.8",
+    "@vue/compiler-sfc": "^3.2.11",
     "@vue/eslint-config-standard": "^6.1.0",
     "@vue/eslint-config-typescript": "^7.0.0",
     "conventional-changelog-cli": "^2.1.1",
@@ -40,13 +40,12 @@
     "lint-staged": "^11.1.2",
     "stylus": "^0.55.0",
     "stylus-loader": "^6.1.0",
-    "typescript": "^4.4.2"
+    "typescript": "^4.4.3"
   },
   "resolutions": {
     "ansi-html": "https://github.com/gebhardtr/ansi-html",
     "glob-parent": "^6.0.1",
-    "merge": "^2.1.1",
-    "trim-off-newlines": "https://github.com/Samarium150/trim-off-newlines"
+    "merge": "^2.1.1"
   },
   "_id": "@",
   "gitHooks": {
