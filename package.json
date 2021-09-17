@@ -45,7 +45,8 @@
   "resolutions": {
     "ansi-html": "https://github.com/gebhardtr/ansi-html",
     "glob-parent": "^6.0.1",
-    "merge": "^2.1.1"
+    "merge": "^2.1.1",
+    "set-value": "^4.1.0"
   },
   "_id": "@",
   "gitHooks": {
