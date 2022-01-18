@@ -44,8 +44,10 @@
   },
   "resolutions": {
     "ansi-html": "https://github.com/gebhardtr/ansi-html",
+    "ansi-regex": "^5.0.1",
     "glob-parent": "^6.0.2",
     "merge": "^2.1.1",
+    "postcss": "^8.4.5",
     "set-value": "^4.1.0"
   },
   "_id": "@",
