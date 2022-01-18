@@ -17,11 +17,15 @@ module.exports = {
         indent: ["error", 4, { SwitchCase: 1 }],
         "vue/html-indent": ["error", 4],
         "vue/max-attributes-per-line": ["warn", {
-            singleline: { max: 2, allowFirstLine: true },
-            multiline: { max: 1, allowFirstLine: false }
+            singleline: { max: 2 },
+            multiline: { max: 1 }
         }],
+        "vue/multi-word-component-names": "off",
         quotes: ["error", "double"],
         semi: ["error", "always"],
         "space-before-function-paren": 0
+    },
+    globals: {
+        defineProps: "readonly"
     }
 };

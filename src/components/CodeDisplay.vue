@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, toRefs, withDefaults } from "vue";
+import { toRefs, withDefaults } from "vue";
 import { PrismEditor } from "vue-prism-editor";
 import highlightJS from "highlight.js";
 

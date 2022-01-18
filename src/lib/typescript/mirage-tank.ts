@@ -6,7 +6,7 @@ class MirageTankImage {
     readonly width: number;
     readonly height: number;
     private channel: number;
-    private data: mjs.Matrix
+    private data: mjs.Matrix;
 
     constructor(image: Jimp | mjs.Matrix) {
         if (image instanceof Jimp) {
@@ -47,7 +47,11 @@ class MirageTankImage {
     }
 
     adjustLightness(ratio: number) {
-        if (ratio > 0) { this.data = mjs.add(mjs.multiply(this.data, 1 - ratio), 255 * ratio) as mjs.Matrix; } else { this.data = mjs.multiply(this.data, 1 + ratio); }
+        if (ratio > 0) {
+            this.data = mjs.add(mjs.multiply(this.data, 1 - ratio), 255 * ratio) as mjs.Matrix;
+        } else {
+            this.data = mjs.multiply(this.data, 1 + ratio);
+        }
     }
 
     linearDodgeBlend(image: MirageTankImage) {
