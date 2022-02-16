@@ -1,6 +1,6 @@
 {
   "name": "mirage-tank-images",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -44,12 +44,9 @@
     "typescript": "^4.5.5"
   },
   "resolutions": {
-    "ansi-html": "https://github.com/gebhardtr/ansi-html",
     "ansi-regex": "^5.0.1",
-    "glob-parent": "^6.0.2",
-    "merge": "^2.1.1",
-    "postcss": "^8.4.5",
-    "set-value": "^4.1.0"
+    "nanoid": "^3.3.0",
+    "postcss": "^8.4.6"
   },
   "_id": "@",
   "gitHooks": {
