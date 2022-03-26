@@ -38,7 +38,7 @@ class MirageTankImage {
     }
 
     desaturate() {
-        this.data = mjs.divide(mjs.add(mjs.max(this.data, 2), mjs.min(this.data, 2)), 2) as mjs.Matrix;
+        this.data = mjs.divide(mjs.add(mjs.max(this.data, 2), mjs.min(this.data, 2)), 2) as unknown as mjs.Matrix;
         this.channel = 1;
     }
 
