@@ -1,3 +1,17 @@
+## [1.2.5](https://github.com/Samarium150/mirage-tank-images/compare/v1.2.4...v1.2.5) (2022-04-12)
+
+### build
+
+* update
+  dependencies ([cd4e9a8](https://github.com/Samarium150/mirage-tank-images/commit/cd4e9a8dd729f50f3a00e425f33e78390329a18b))
+* update
+  dependencies ([8d39a63](https://github.com/Samarium150/mirage-tank-images/commit/8d39a63b54bb0f6d1c75839fbfe9e129aa659ff4))
+
+### chore
+
+* update
+  CHANGELOG ([94bf567](https://github.com/Samarium150/mirage-tank-images/commit/94bf567d700764b59bd6806b5d2b8c01003bdb5a))
+
 ## [1.2.4](https://github.com/Samarium150/mirage-tank-images/compare/v1.2.3...v1.2.4) (2022-02-16)
 
 ### build
