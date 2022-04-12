@@ -1,6 +1,6 @@
 {
   "name": "mirage-tank-images",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -8,22 +8,20 @@
     "changelog": "conventional-changelog -p eslint -i CHANGELOG.md -s"
   },
   "dependencies": {
-    "ant-design-vue": "^2.2.6",
+    "ant-design-vue": "^3.1.1",
     "arraybuffer-to-buffer": "^0.0.7",
     "comlink": "^4.3.1",
-    "highlight.js": "^11.5.0",
+    "highlight.js": "^11.5.1",
     "jimp": "^0.16.1",
-    "mathjs": "^10.4.1",
-    "nanoid": "^3.3.1",
-    "particles.vue3": "^1.42.4",
-    "postcss": "^8.4.12",
+    "mathjs": "^10.4.3",
+    "particles.vue3": "^1.43.1",
     "vue": "^3.2.31",
     "vue-prism-editor": "^2.0.0-alpha.2",
     "vue-router": "^4.0.14"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.16.0",
-    "@typescript-eslint/parser": "^5.16.0",
+    "@typescript-eslint/eslint-plugin": "^5.19.0",
+    "@typescript-eslint/parser": "^5.19.0",
     "@vue/cli": "5.0.4",
     "@vue/cli-plugin-babel": "5.0.4",
     "@vue/cli-plugin-eslint": "5.0.4",
@@ -34,11 +32,11 @@
     "@vue/eslint-config-standard": "^6.1.0",
     "@vue/eslint-config-typescript": "^10.0.0",
     "conventional-changelog-cli": "^2.2.2",
-    "eslint": "^8.12.0",
-    "eslint-plugin-import": "^2.25.4",
+    "eslint": "^8.13.0",
+    "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^6.0.0",
-    "eslint-plugin-vue": "^8.5.0",
+    "eslint-plugin-vue": "^8.6.0",
     "lint-staged": "^12.3.7",
     "stylus": "^0.57.0",
     "stylus-loader": "^6.2.0",
@@ -46,8 +44,8 @@
   },
   "resolutions": {
     "ansi-regex": "^5.0.1",
-    "nanoid": "^3.3.0",
-    "postcss": "^8.4.6"
+    "nanoid": "^3.3.2",
+    "postcss": "^8.4.12"
   },
   "_id": "@",
   "gitHooks": {
